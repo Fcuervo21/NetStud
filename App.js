@@ -18,11 +18,16 @@ const Stack = createStackNavigator();
 const App = () => {
 	
     const [loaded] = useFonts({
-        InterBold: require("./assets/fonts/Inter-Bold.ttf"),
-        InterSemiBold: require("./assets/fonts/Inter-SemiBold.ttf"),
-        InterMedium: require("./assets/fonts/Inter-Medium.ttf"),
-        InterRegular: require("./assets/fonts/Inter-Regular.ttf"),
-        InterLight: require("./assets/fonts/Inter-Light.ttf"),
+        PoppinsBlack: require("./assets/fonts/Poppins-Black.ttf"),
+        PoppinsBold: require("./assets/fonts/Poppins-Bold.ttf"),
+        PoppinsExtraLight: require("./assets/fonts/Poppins-ExtraLight.ttf"),
+        PoppinsItalic: require("./assets/fonts/Poppins-Italic.ttf"),
+        PoppinsLight: require("./assets/fonts/Poppins-Light.ttf"),
+        PoppinsMedium: require("./assets/fonts/Poppins-Medium.ttf"),
+        PoppinsRegular: require("./assets/fonts/Poppins-Regular.ttf"),
+        PoppinsThin: require("./assets/fonts/Poppins-Thin.ttf"),
+        PoppinsThinItalic: require("./assets/fonts/Poppins-ThinItalic.ttf"),
+        
     });
 
 	if (!loaded) return null;
