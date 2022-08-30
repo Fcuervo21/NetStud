@@ -1,9 +1,14 @@
 export const COLORS = {
     primary: "#344B6E",
-    secondary: "#4D626C",
+    secondary: "#768499",
+    dark: "#0E2A55",
+    white: "#E8E8EA",
   
-    white: "#FFF",
-    gray: "#74858C",
+    background: "#F9F3EC",
+    navback: "#ECEBEB",
+
+    red: "#B31E1A",
+    orange: "#E64525"
   };
   
   export const SIZES = {
@@ -29,7 +34,7 @@ export const COLORS = {
   
   export const SHADOWS = {
     light: {
-      shadowColor: COLORS.gray,
+      shadowColor: COLORS.white,
       shadowOffset: {
         width: 0,
         height: 1,
@@ -40,7 +45,7 @@ export const COLORS = {
       elevation: 3,
     },
     medium: {
-      shadowColor: COLORS.gray,
+      shadowColor: COLORS.white,
       shadowOffset: {
         width: 0,
         height: 3,
@@ -51,7 +56,7 @@ export const COLORS = {
       elevation: 7,
     },
     dark: {
-      shadowColor: COLORS.gray,
+      shadowColor: COLORS.white,
       shadowOffset: {
         width: 0,
         height: 7,
