@@ -23,7 +23,8 @@
     "react-native-gesture-handler": "^2.5.0",
     "react-native-safe-area-context": "4.3.1",
     "react-native-svg": "9.13.3",
-    "react-native-web": "~0.18.7"
+    "react-native-web": "~0.18.7",
+    "react-native-svg-transformer": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

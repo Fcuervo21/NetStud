@@ -3,7 +3,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { FocusedStatusBar } from "../../components";
 import { COLORS } from "../../constants";
 import styles from "./styles";
-import TopPart from "./components/topPart";
+import TopPart from "./components/TopPart";
 import BottomPart from "./components/BottomPart";
 
 const Home = () => {
