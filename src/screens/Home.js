@@ -3,7 +3,7 @@ import { Text, SafeAreaView, FlatList, View } from "react-native";
 
 import { FocusedStatusBar, HomeHeader, PostCard } from "../components";
 
-import { COLORS, NetStudData } from "../../constants";
+import { COLORS, NetStudData } from "../constants";
 
 const Home = () => {
     return (

@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import { COLORS, SIZES, SHADOWS, assets } from "../constants";
 import { CircleButton, RectButton } from "./Button";
+import { PostTitle, PostDescription, PostCreator, PostType, PostDate } from "./SubInfo";
 
 const PostCard = ({ data }) => {
     const navigation = useNavigation();
@@ -16,6 +17,7 @@ const PostCard = ({ data }) => {
 		}}>
 			<Text>PostCard</Text>
 			<CircleButton imgUrl={assets.heart} right={10} top={10} />
+			<PostDescription />
 
 
 
