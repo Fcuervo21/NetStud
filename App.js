@@ -4,6 +4,13 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import Welcome from "./src/screens/Welcome/Welcome";
 
+import reducers from "./src/reducers";
+import {Provider} from "react-redux";
+import thunk from "redux-thunk";
+import {createStore, applyMiddleware, compose} from "redux"
+import { composeWithDevTools } from '@redux-devtools/extension';
+const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))
+
 const theme = {
 	...DefaultTheme,
 	colors: {
@@ -29,15 +36,17 @@ const App = () => {
 	if (!loaded) return null;
 
 	return (
-		<NavigationContainer theme={theme}>
-			<Stack.Navigator
-				screenOptions={{ headerShown: false }}
-				initialRouteName="Welcome"
-			>
-				<Stack.Screen name="Welcome" component={Welcome} />
-				{/* <Stack.Screen name="Messages" component={Details}/> */}
-			</Stack.Navigator>
-		</NavigationContainer>
+        <Provider store={store}>
+            <NavigationContainer theme={theme}>
+                <Stack.Navigator
+                    screenOptions={{ headerShown: false }}
+                    initialRouteName="Welcome"
+                >
+                    <Stack.Screen name="Welcome" component={Welcome} />
+                    {/* <Stack.Screen name="Messages" component={Details}/> */}
+                </Stack.Navigator>
+            </NavigationContainer>
+        </Provider>
 	);
 };
 
