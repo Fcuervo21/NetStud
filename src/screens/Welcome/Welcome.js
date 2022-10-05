@@ -6,7 +6,7 @@ import styles from "./styles";
 import TopPart from "./components/TopPart";
 import BottomPart from "./components/BottomPart";
 
-const Home = () => {
+const Welcome = () => {
 	return (
 		<LinearGradient
 			colors={["#0E2A55", "#F9F3EC"]}
@@ -28,4 +28,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Welcome;

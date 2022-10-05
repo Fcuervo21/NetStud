@@ -2,7 +2,10 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { useFonts } from "expo-font";
+
 import Welcome from "./src/screens/Welcome/Welcome";
+import Posts from "./src/screens/Posts/Posts";
+
 
 import reducers from "./src/reducers";
 import {Provider} from "react-redux";
@@ -43,6 +46,7 @@ const App = () => {
                     initialRouteName="Welcome"
                 >
                     <Stack.Screen name="Welcome" component={Welcome} />
+					<Stack.Screen name="Post" component={Posts} />
                     {/* <Stack.Screen name="Messages" component={Details}/> */}
                 </Stack.Navigator>
             </NavigationContainer>
