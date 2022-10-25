@@ -43,11 +43,10 @@ const styles = StyleSheet.create({
 		fontFamily: "PoppinsRegular",
 	},
 	textLogin: {
-		color: "rgba(14, 42, 85, 1)",
-		fontFamily: "PoppinsRegular",
+		color: COLORS.dark,
+		// fontFamily: "PoopinsBold",
 		fontSize: 30,
-		fontWeight: 'bold',
-		
+		fontWeight: "bold",
 		paddingBottom: 10,
 		justifyContent: "left",
 		alignItems: "left",
@@ -62,10 +61,10 @@ const styles = StyleSheet.create({
 	},
 
 	LoginInputs: {
-		width: 250,
-		height: 18,
+		width: "100%",
+		height: 60,
 		borderColor: "rgba(52, 75, 110, 1)",
-		borderWidth: 4,
+		borderWidth: 2,
 		borderRadius: 15,
 		padding: 15,
 		fontSize: 16,
@@ -87,11 +86,16 @@ const styles = StyleSheet.create({
 		color: "rgba(14, 42, 85, 1)",
 	},
 
-	closeForm:{
-		justifyContent: "self-end",
-		alignItems: "self-end",
-		marginBottom: -20, 
+	wrapperTop:{
+		display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 20
 	},
+    closeForm:{
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
 })
 
 export default styles; 

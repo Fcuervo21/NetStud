@@ -1,4 +1,4 @@
-import { Text, Pressable, View, form, input, TouchableOpacity } from "react-native";
+import { Text, Pressable, View, TextInput } from "react-native";
 import React, { useState, useEffect } from 'react';
 import styles from "../styles";
 import BottomPart from "./BottomPart";
@@ -8,22 +8,21 @@ const Login = () => {
     return (
         <View style={styles.backgroundCard}>
 
-            <Text style={styles.textBienvenido}>Bienvenido</Text>
-            <View style={styles.closeForm}>
-                <Pressable 
-                onPress={() => {
-                    const [login, setLogin] = useState(false)
-                  }}
-                  >
-                <CloseForm />
-                </Pressable>
+            <View style={styles.wrapperTop}>
+                <View>
+                    <Text style={styles.textBienvenido}>Bienvenido</Text>
+                    <Text style={styles.textLogin}>Login</Text>
+                </View>
+                
+                <View style={styles.closeForm}>
+                    <CloseForm />
+                </View>
             </View>
-            <Text style={styles.textLogin}>Login</Text>
 
-            <form>
-                <input style={styles.LoginInputs} placeholder="Usuario" />
-                <input style={styles.LoginInputs} placeholder="Password" />
-            </form>
+            <View>
+                <TextInput style={styles.LoginInputs} placeholder="Usuario" />
+                <TextInput style={styles.LoginInputs} placeholder="Password" />
+            </View>
 
             <Text style={styles.noPassword}>¿Olvidaste tu contraseña?</Text>
 
