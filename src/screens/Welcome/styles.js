@@ -1,5 +1,5 @@
-import {StyleSheet} from "react-native";
-import {COLORS} from "../../constants";
+import { StyleSheet } from "react-native";
+import { COLORS } from "../../constants";
 
 const styles = StyleSheet.create({
 	linearGradient: {
@@ -10,11 +10,12 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "space-between",
 		paddingTop: 50,
-		paddingBottom: 50,
 	},
+
 	wrapper: {
 		justifyContent: "center",
 		alignItems: "center",
+		paddingBottom: 30,
 	},
 	slogan: {
 		color: "rgba(246, 240, 234, 0.69)",
@@ -41,6 +42,56 @@ const styles = StyleSheet.create({
 	text: {
 		fontFamily: "PoppinsRegular",
 	},
-});
+	textLogin: {
+		color: "rgba(14, 42, 85, 1)",
+		fontFamily: "PoppinsRegular",
+		fontSize: 30,
+		fontWeight: 'bold',
+		
+		paddingBottom: 10,
+		justifyContent: "left",
+		alignItems: "left",
+	},
 
-export default styles;
+	textBienvenido: {
+		color: "rgba(14, 42, 85, 1)",
+		fontFamily: "PoppinsRegular",
+		fontSize: 20,
+		justifyContent: "left",
+		alignItems: "left",
+	},
+
+	LoginInputs: {
+		width: 250,
+		height: 18,
+		borderColor: "rgba(52, 75, 110, 1)",
+		borderWidth: 4,
+		borderRadius: 15,
+		padding: 15,
+		fontSize: 16,
+		marginBottom: 20
+	},
+
+	backgroundCard: {
+		paddingLeft: 25,
+		paddingRight: 25,
+		paddingTop: 25,
+		borderTopLeftRadius: '40px',
+		borderTopRightRadius: '40px',
+		backgroundColor: COLORS.navback
+	},
+
+	noPassword: {
+		fontSize: 14,
+		marginBottom: 20,
+		color: "rgba(14, 42, 85, 1)",
+	},
+
+	closeForm:{
+		justifyContent: "self-end",
+		alignItems: "self-end",
+		marginBottom: -20, 
+	},
+})
+
+export default styles; 

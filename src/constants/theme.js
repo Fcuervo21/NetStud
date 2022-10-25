@@ -3,7 +3,6 @@ export const COLORS = {
     secondary: "#768499",
     dark: "#0E2A55",
     white: "#E8E8EA",
-  
     background: "#F9F3EC",
     navback: "#ECEBEB",
 
