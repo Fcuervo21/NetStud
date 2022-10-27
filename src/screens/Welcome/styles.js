@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
 		paddingTop: 25,
 		borderTopLeftRadius: '40px',
 		borderTopRightRadius: '40px',
-		backgroundColor: COLORS.navback
+		backgroundColor: COLORS.navback,
+        height: 500,
 	},
 
 	noPassword: {
@@ -85,7 +86,9 @@ const styles = StyleSheet.create({
 		marginBottom: 20,
 		color: "rgba(14, 42, 85, 1)",
 	},
-
+    containerAvoiding: {
+        flex: 1,
+    },
 	wrapperTop:{
 		display: 'flex',
         flexDirection: 'row',

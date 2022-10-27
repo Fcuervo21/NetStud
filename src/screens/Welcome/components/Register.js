@@ -3,25 +3,26 @@ import {
 	Pressable,
 	View,
 	TextInput,
+    ScrollView
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import styles from "../styles";
 import BottomPart from "./BottomPart";
 import CloseForm from "../../../assets/icons/closeForm";
 
-const Login = ({ setLogin }) => {
+const Register = ({ setRegister }) => {
 	return (
 		<View style={styles.backgroundCard}>
 			<View style={styles.wrapperTop}>
 				<View>
-					<Text style={styles.textBienvenido}>Bienvenido</Text>
-					<Text style={styles.textLogin}>Login</Text>
+					<Text style={styles.textBienvenido}>Hola</Text>
+					<Text style={styles.textLogin}>Registrate...</Text>
 				</View>
 
 				<View style={styles.closeForm}>
 					<Pressable
 						onPress={() => {
-							setLogin(false);
+							setRegister(false);
 						}}
 					>
 						<CloseForm />
@@ -29,16 +30,19 @@ const Login = ({ setLogin }) => {
 				</View>
 			</View>
 
-			<View>
-				<TextInput style={styles.LoginInputs} placeholder="Usuario" />
-				<TextInput style={styles.LoginInputs} placeholder="Password" />
-			</View>
+            <ScrollView style={styles.scrollView}>
 
-			<Text style={styles.noPassword}>¿Olvidaste tu contraseña?</Text>
+				<TextInput style={styles.LoginInputs} placeholder="Correo" />
+				<TextInput style={styles.LoginInputs} placeholder="Nombre" />
+				<TextInput style={styles.LoginInputs} placeholder="Apellido" />
+				<TextInput style={styles.LoginInputs} placeholder="Password" />
+				<TextInput style={styles.LoginInputs} placeholder="Confirmar contraseña" />
+
+            </ScrollView>
 
 			<BottomPart />
 		</View>
 	);
 };
 
-export default Login;
+export default Register;
