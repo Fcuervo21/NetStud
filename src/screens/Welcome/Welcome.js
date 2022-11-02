@@ -19,7 +19,7 @@ import Register from "./components/Register";
 
 const LoginForm = (setLogin, login) => {
     if (login){
-        return (<Login setLogin={setLogin}/>)
+        return (<Login login={login} setLogin={setLogin}/>)
     }
 }
 

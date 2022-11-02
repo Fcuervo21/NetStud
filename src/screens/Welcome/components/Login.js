@@ -1,21 +1,22 @@
-import {
-	Text,
-	Pressable,
-	View,
-	TextInput,
-} from "react-native";
+import { Text, Pressable, View, TextInput } from "react-native";
 import React, { useState, useEffect } from "react";
 import styles from "../styles";
-import BottomPart from "./BottomPart";
 import CloseForm from "../../../assets/icons/closeForm";
+import { COLORS } from "../../../constants";
+import SendInfoButton from "./SendInfoButton";
 
-const Login = ({ setLogin }) => {
+const Login = ({ login, setLogin }) => {
+	const [userData, setUserData] = useState({
+		user: "",
+		password: "",
+	});
+
 	return (
 		<View style={styles.backgroundCard}>
 			<View style={styles.wrapperTop}>
 				<View>
 					<Text style={styles.textBienvenido}>Bienvenido</Text>
-					<Text style={styles.textLogin}>Login</Text>
+					<Text style={styles.textLogin}>Inicia sesión</Text>
 				</View>
 
 				<View style={styles.closeForm}>
@@ -30,13 +31,26 @@ const Login = ({ setLogin }) => {
 			</View>
 
 			<View>
-				<TextInput style={styles.LoginInputs} placeholder="Usuario" />
-				<TextInput style={styles.LoginInputs} placeholder="Password" />
+				<TextInput
+					onChangeText={(username) =>
+						setUserData({ ...userData, user: username })
+					}
+					style={styles.LoginInputs}
+					placeholder="Usuario"
+				/>
+				<TextInput
+					onChangeText={(password) =>
+						setUserData({ ...userData, password: password })
+					}
+					style={styles.LoginInputs}
+					placeholder="Password"
+                    secureTextEntry={true}
+				/>
 			</View>
 
 			<Text style={styles.noPassword}>¿Olvidaste tu contraseña?</Text>
 
-			<BottomPart />
+			<SendInfoButton login={true} userData={userData}/>
 		</View>
 	);
 };

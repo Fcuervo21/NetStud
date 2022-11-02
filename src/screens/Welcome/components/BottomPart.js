@@ -1,14 +1,19 @@
 import { Text, Pressable, View } from "react-native";
+import {React, useState} from "react";
 import { COLORS } from "../../../constants";
 import styles from "../styles";
 
-const BottomPart = ({ setLogin, setRegister }) => {
+const BottomPart = ({ login, setLogin, setRegister }) => {
+
+
+
 	return (
 		<>
 			<View style={styles.wrapper}>
 				<Pressable
+                    
 					onPress={() => {
-						setLogin(true);
+                        login==true?setLogin(false):setLogin(true);
 					}}
 					style={({ pressed }) => [
 						{
