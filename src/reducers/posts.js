@@ -1,4 +1,4 @@
-import { CREATE_POST, FETCH_ALL_POSTS } from "../constants/postsActions";
+import { CREATE_POST, FETCH_ALL_POSTS } from "../reduxConstants/postsConstants";
 
 export default (state = [], action) => {
 	switch (action.type) {

@@ -3,6 +3,8 @@ import {React, useState} from "react";
 import { COLORS } from "../../../constants";
 import styles from "../styles";
 
+import { signIn, signUp } from "../../../actions/auth";
+
 const SendInfoButton = ({ login, userData }) => {
 
 	return (
