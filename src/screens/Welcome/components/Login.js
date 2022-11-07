@@ -1,35 +1,58 @@
 import { Text, Pressable, View, TextInput } from "react-native";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import styles from "../styles";
-import BottomPart from "./BottomPart";
 import CloseForm from "../../../assets/icons/closeForm";
+import { COLORS } from "../../../constants";
+import SendInfoButton from "./SendInfoButton";
 
-const Login = () => {
-    return (
-        <View style={styles.backgroundCard}>
+const Login = ({ login, setLogin }) => {
+	const [userData, setUserData] = useState({
+		user: "",
+		password: "",
+	});
 
-            <View style={styles.wrapperTop}>
-                <View>
-                    <Text style={styles.textBienvenido}>Bienvenido</Text>
-                    <Text style={styles.textLogin}>Login</Text>
-                </View>
-                
-                <View style={styles.closeForm}>
-                    <CloseForm />
-                </View>
-            </View>
+	return (
+		<View style={styles.backgroundCard}>
+			<View style={styles.wrapperTop}>
+				<View>
+					<Text style={styles.textBienvenido}>Bienvenido</Text>
+					<Text style={styles.textLogin}>Inicia sesión</Text>
+				</View>
 
-            <View>
-                <TextInput style={styles.LoginInputs} placeholder="Usuario" />
-                <TextInput style={styles.LoginInputs} placeholder="Password" />
-            </View>
+				<View style={styles.closeForm}>
+					<Pressable
+						onPress={() => {
+							setLogin(false);
+						}}
+					>
+						<CloseForm />
+					</Pressable>
+				</View>
+			</View>
 
-            <Text style={styles.noPassword}>¿Olvidaste tu contraseña?</Text>
+			<View>
+				<TextInput
+					onChangeText={(username) =>
+						setUserData({ ...userData, user: username })
+					}
+					style={styles.LoginInputs}
+					placeholder="Usuario"
+				/>
+				<TextInput
+					onChangeText={(password) =>
+						setUserData({ ...userData, password: password })
+					}
+					style={styles.LoginInputs}
+					placeholder="Password"
+                    secureTextEntry={true}
+				/>
+			</View>
 
-            <BottomPart />
+			<Text style={styles.noPassword}>¿Olvidaste tu contraseña?</Text>
 
-        </View>
-    );
+			<SendInfoButton login={true} userData={userData}/>
+		</View>
+	);
 };
 
 export default Login;

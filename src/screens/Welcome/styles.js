@@ -9,13 +9,12 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: "space-between",
-		paddingTop: 50,
+		paddingTop: 25,
 	},
 
 	wrapper: {
 		justifyContent: "center",
 		alignItems: "center",
-		paddingBottom: 30,
 	},
 	slogan: {
 		color: "rgba(246, 240, 234, 0.69)",
@@ -77,15 +76,23 @@ const styles = StyleSheet.create({
 		paddingTop: 25,
 		borderTopLeftRadius: '40px',
 		borderTopRightRadius: '40px',
-		backgroundColor: COLORS.navback
-	},
+		backgroundColor: COLORS.navback,
+        zIndex: 1, // works on ios
+        elevation: 1, // works on android
+        position: 'absolute',
+        width: '100%',
+        bottom: 0,
+    },
+	
 
 	noPassword: {
 		fontSize: 14,
 		marginBottom: 20,
 		color: "rgba(14, 42, 85, 1)",
 	},
-
+    containerAvoiding: {
+        flex: 1,
+    },
 	wrapperTop:{
 		display: 'flex',
         flexDirection: 'row',

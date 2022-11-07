@@ -1,4 +1,11 @@
-import { SafeAreaView, View } from "react-native";
+import {
+	SafeAreaView,
+	View,
+	KeyboardAvoidingView,
+	TouchableWithoutFeedback,
+	Keyboard,
+	Platform,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { FocusedStatusBar } from "../../components";
 import { COLORS } from "../../constants";
@@ -7,12 +14,24 @@ import TopPart from "./components/TopPart";
 import BottomPart from "./components/BottomPart";
 import Login from "./components/Login";
 import { useState } from "react";
+import Register from "./components/Register";
 
 
+const LoginForm = (setLogin, login) => {
+    if (login){
+        return (<Login login={login} setLogin={setLogin}/>)
+    }
+}
+
+const RegisterForm = (setRegister, register) => {
+    if (register){
+        return (<Register setRegister={setRegister}/>)
+    }
+}
 
 const Welcome = () => {
-
-	const [login, setLogin] = useState(true)
+	const [login, setLogin] = useState(false);
+	const [register, setRegister] = useState(false);
 
 	return (
 		<LinearGradient
@@ -25,18 +44,21 @@ const Welcome = () => {
 				}}
 			>
 				<FocusedStatusBar background={COLORS.primary} />
-				<View style={styles.container}>
-					<TopPart />
+				<KeyboardAvoidingView
+					behavior={Platform.OS === "ios" ? "padding" : "height"}
+					style={styles.containerAvoiding}
+				>
+					<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+						<View style={styles.container}>
+							<TopPart />
 
+                                {LoginForm(setLogin, login)}
+                                {RegisterForm(setRegister, register)}
+                                {  !login && !register && <BottomPart setLogin={setLogin} setRegister={setRegister} />}
 
-					{
-						login ?
-							<Login />
-							:
-							<BottomPart />
-
-					}
-				</View>
+						</View>
+					</TouchableWithoutFeedback>
+				</KeyboardAvoidingView>
 			</SafeAreaView>
 		</LinearGradient>
 	);

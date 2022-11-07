@@ -1,12 +1,20 @@
 import { Text, Pressable, View } from "react-native";
+import {React, useState} from "react";
 import { COLORS } from "../../../constants";
 import styles from "../styles";
 
-const BottomPart = () => {
+const BottomPart = ({ login, setLogin, setRegister }) => {
+
+
+
 	return (
 		<>
 			<View style={styles.wrapper}>
 				<Pressable
+                    
+					onPress={() => {
+                        login==true?setLogin(false):setLogin(true);
+					}}
 					style={({ pressed }) => [
 						{
 							backgroundColor: pressed
@@ -28,7 +36,11 @@ const BottomPart = () => {
 					>
 						¿No tienes cuenta?
 					</Text>
-					<Pressable>
+					<Pressable
+                        onPress={() => {
+						setRegister(true);
+					}}
+                    >
 						{({ pressed }) => (
 							<Text
 								style={[
