@@ -2,8 +2,7 @@ import { Text, Pressable, View } from "react-native";
 import {React, useState} from "react";
 import { COLORS } from "../../../constants";
 import styles from "../styles";
-
-import { signIn, signUp } from "../../../actions/auth";
+import { signIn, signUp } from "../../../api";
 
 const SendInfoButton = ({ login, userData }) => {
 
@@ -14,7 +13,7 @@ const SendInfoButton = ({ login, userData }) => {
 			<View style={styles.wrapper}>
 				<Pressable
 					onPress={() => {
-					    console.log(userData);
+					    signIn(userData)
 					}}
 					style={({ pressed }) => [
 						{
@@ -64,7 +63,7 @@ const SendInfoButton = ({ login, userData }) => {
             <View style={styles.wrapper}>
 				<Pressable
 					onPress={() => {
-					    console.log(userData);
+					    signUp(userData)
 					}}
 					style={({ pressed }) => [
 						{

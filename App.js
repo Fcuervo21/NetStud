@@ -1,36 +1,11 @@
-import {React, useState} from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import {React} from "react";
 import { useFonts } from "expo-font";
-import { Text, View } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Ionicons from "react-native-vector-icons/Ionicons";
 
-import Welcome from "./src/screens/Welcome/Welcome";
-import Posts from "./src/screens/Posts/Posts";
-
-import reducers from "./src/reducers";
-import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-import { createStore, applyMiddleware, compose } from "redux";
-import { composeWithDevTools } from "@redux-devtools/extension";
-const store = createStore(
-	reducers,
-	composeWithDevTools(applyMiddleware(thunk))
-);
-
-const theme = {
-	...DefaultTheme,
-	colors: {
-		...DefaultTheme.colors,
-		background: "transparent",
-	},
-};
-const Stack = createStackNavigator();
-const Tab = createBottomTabNavigator();
+import { Router } from "./src/routes/Router";
+import { AuthProvider } from "./src/contexts/Auth";
 
 const App = () => {
-	const [login, setlogin] = useState(true);
+
 	const [loaded] = useFonts({
 		PoppinsBlack: require("./src/assets/fonts/Poppins-Black.ttf"),
 		PoppinsBold: require("./src/assets/fonts/Poppins-Bold.ttf"),
@@ -46,54 +21,9 @@ const App = () => {
 	if (!loaded) return null;
 
 	return (
-		<Provider store={store}>
-			{login == false ? (
-				<NavigationContainer theme={theme}>
-					<Stack.Navigator
-						screenOptions={{ headerShown: false }}
-						initialRouteName="Welcome"
-					>
-						{/* <Stack.Screen name="Welcome" component={Welcome} /> */}
-						<Stack.Screen name="Post" component={Posts} />
-						{/* <Stack.Screen name="Messages" component={Details}/> */}
-					</Stack.Navigator>
-				</NavigationContainer>
-			) : (
-				<NavigationContainer theme={theme}>
-					<Tab.Navigator
-						screenOptions={({ route }) => ({
-							tabBarIcon: ({ focused, color, size }) => {
-								let iconName;
-
-								if (route.name === "Home") {
-									iconName = focused
-                                        ? "md-home-sharp"
-										: "md-home-outline";
-								} else if (route.name === "Settings") {
-									iconName = focused
-										? "ios-list"
-										: "ios-list-outline";
-								}
-
-								// You can return any component that you like here!
-								return (
-									<Ionicons
-										name={iconName}
-										size={size}
-										color={color}
-									/>
-								);
-							},
-							tabBarActiveTintColor: "tomato",
-							tabBarInactiveTintColor: "gray",
-						})}
-					>
-						<Tab.Screen name="Home" options={{ headerShown: false }} component={Posts} />
-						<Tab.Screen name="Settings" component={Posts} />
-					</Tab.Navigator>
-				</NavigationContainer>
-			)}
-		</Provider>
+		<AuthProvider>
+			<Router/>
+		</AuthProvider>
 	);
 };
 
