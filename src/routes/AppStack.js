@@ -20,6 +20,19 @@ export const AppStack = () => {
                     } else if (route.name === "Settings") {
                         iconName = focused ? "ios-list" : "ios-list-outline";
                     }
+                    else if (route.name === "New") {
+                        iconName = focused ? "pluscircle" : "pluscircleo";
+                    }
+                    else if (route.name === "Message") {
+                        iconName = focused ? "chatbubble-ellipses" : "chatbubble-ellipses-outline";
+                    }
+                    else if (route.name === "Liked") {
+                        iconName = focused ? "heart" : "hearto";
+                    }
+                    else if (route.name === "Profile") {
+                        iconName = focused ? "ios-person-circle" : "ios-person-circle-outline";
+                    }
+                    
 
                     // You can return any component that you like here!
                     return (
@@ -35,7 +48,10 @@ export const AppStack = () => {
                 options={{ headerShown: false }}
                 component={Posts}
             />
-            <Tab.Screen name="Settings" component={Posts} />
+            <Tab.Screen name="Message" component={Posts} />
+            <Tab.Screen name="New" component={Posts} />
+            <Tab.Screen name="Liked" component={Posts} />
+            <Tab.Screen name="Profile" component={Posts} />
         </Tab.Navigator>
     );
 };
