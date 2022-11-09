@@ -1,6 +1,6 @@
 import { SafeAreaView, View, Text } from "react-native";
 import { HomeHeader } from "../../components";
-import Card from "./components/Card";
+import NewCard from "./components/NewCard";
 import {COLORS} from "../../constants/theme";
 import styles from "./styles";
 import {FocusedStatusBar} from "../../components";
@@ -12,12 +12,7 @@ const NewPost = () => {
             <FocusedStatusBar backgroundColor="red"/>
             <ScrollView style={styles.mainContent}>
                 <HomeHeader />
-                <Card tipoPost={"evento"}/>
-                <Card tipoPost={"pregunta"}/>
-                <Card tipoPost={"pregunta"}/>
-                <Card tipoPost={"evento"}/>
-                <Card tipoPost={"evento"}/>
-                <Card tipoPost={"ayuda"}/>
+                <NewCard tipoPost={"evento"}/>
             </ScrollView>
         </SafeAreaView>
     );

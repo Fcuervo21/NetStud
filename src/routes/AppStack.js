@@ -1,8 +1,10 @@
 import React from "react";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import Posts from "../screens/Posts/Posts";
+import NewPost from "../screens/NewPost/NewPost";
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import { Ionicons } from "react-native-vector-icons/";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,22 +19,27 @@ export const AppStack = () => {
                         iconName = focused
                             ? "md-home-sharp"
                             : "md-home-outline";
-                    } else if (route.name === "Settings") {
+                    } 
+                    else if (route.name === "Settings") {
                         iconName = focused ? "ios-list" : "ios-list-outline";
-                    }
+                    } 
                     else if (route.name === "New") {
-                        iconName = focused ? "pluscircle" : "pluscircleo";
-                    }
-                    else if (route.name === "Message") {
-                        iconName = focused ? "chatbubble-ellipses" : "chatbubble-ellipses-outline";
-                    }
+                        iconName = focused
+                            ? "add-circle"
+                            : "add-circle-outline";
+                    } 
+                    // else if (route.name === "Message") {
+                    //     iconName = focused
+                    //         ? "chatbubble-ellipses"
+                    //         : "chatbubble-ellipses-outline";
+                    // } 
                     else if (route.name === "Liked") {
-                        iconName = focused ? "heart" : "hearto";
+                        iconName = focused ? "ios-heart" : "heart-outline";
+                    } else if (route.name === "Profile") {
+                        iconName = focused
+                            ? "ios-person-circle"
+                            : "ios-person-circle-outline";
                     }
-                    else if (route.name === "Profile") {
-                        iconName = focused ? "ios-person-circle" : "ios-person-circle-outline";
-                    }
-                    
 
                     // You can return any component that you like here!
                     return (
@@ -48,10 +55,26 @@ export const AppStack = () => {
                 options={{ headerShown: false }}
                 component={Posts}
             />
-            <Tab.Screen name="Message" component={Posts} />
-            <Tab.Screen name="New" component={Posts} />
-            <Tab.Screen name="Liked" component={Posts} />
-            <Tab.Screen name="Profile" component={Posts} />
+            {/* <Tab.Screen
+                name="Message"
+                options={{ headerShown: false }}
+                component={Posts}
+            /> */}
+            <Tab.Screen
+                name="New"
+                options={{ headerShown: false }}
+                component={NewPost}
+            />
+            <Tab.Screen
+                name="Liked"
+                options={{ headerShown: false }}
+                component={Posts}
+            />
+            <Tab.Screen
+                name="Profile"
+                options={{ headerShown: false }}
+                component={Posts}
+            />
         </Tab.Navigator>
     );
 };

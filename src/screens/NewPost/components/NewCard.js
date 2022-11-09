@@ -8,7 +8,7 @@ import Evento from "../../../assets/icons/evento";
 import Pregunta from "../../../assets/icons/pregunta";
 import Ayuda from "../../../assets/icons/ayuda";
 
-const icon = (type) =>{
+const icon = (type) => {
     switch (type) {
         case "evento":
             return <Evento />;
@@ -19,9 +19,9 @@ const icon = (type) =>{
         default:
             break;
     }
-}
+};
 
-const NewCard = ({tipoPost}) => {
+const NewCard = ({ tipoPost }) => {
     return (
         <SafeAreaView>
             <View style={styles.cardWrapper}>
@@ -29,22 +29,20 @@ const NewCard = ({tipoPost}) => {
                     <View style={styles.cardHeader}>
                         <Profile />
                         <View style={styles.wrapperTittle}>
-                            <Text style={styles.cardTitle}>Card Title</Text>
-                            <Text style={styles.cardSubtitle}>Card Subtitle</Text>
+                            <Text style={styles.cardTitle}>User Name</Text>
+                            <Text style={styles.cardSubtitle}>
+                                User description
+                            </Text>
                         </View>
                         {icon(tipoPost)}
                     </View>
+
                     <View style={styles.cardBody}>
-                        <Text style={styles.cardBodyText}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                        </Text>
-                        <View style={styles.image}></View>
-                        <View style={styles.actionsContainer}>
-                            <Heart />
-                            <View style={{paddingHorizontal: 20}}>
-                                <Comment/>
-                            </View>
-                            <Share />
+                        <Text style={styles.cardBodyText}>Escribe algo...</Text>
+                        <View style={styles.image}>
+                            <Text style={styles.textInImage}>
+                                Presiona para agregar una foto
+                            </Text>
                         </View>
                     </View>
                 </View>

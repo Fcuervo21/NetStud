@@ -7,7 +7,7 @@ import SendInfoButton from "./SendInfoButton";
 
 const Login = ({ login, setLogin }) => {
 	const [userData, setUserData] = useState({
-		user: "",
+		email: "",
 		password: "",
 	});
 
@@ -32,8 +32,8 @@ const Login = ({ login, setLogin }) => {
 
 			<View>
 				<TextInput
-					onChangeText={(username) =>
-						setUserData({ ...userData, user: username })
+					onChangeText={(email) =>
+						setUserData({ ...userData, email: email })
 					}
 					style={styles.LoginInputs}
 					placeholder="Usuario"
