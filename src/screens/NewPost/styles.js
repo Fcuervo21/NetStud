@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         fontFamily: "PoppinsLight",
     },
     image:{
-        backgroundColor: "rgba(0,0,0,0.1)",
+        // backgroundColor: "rgba(0,0,0,0.1)",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -98,8 +98,23 @@ const styles = StyleSheet.create({
         color: COLORS.text,
         fontFamily: "PoppinsLight",
         textAlign: "center",
+    },
+    input:{
+        // backgroundColor: "red",
+        padding: 10,
+        fontStyle: "italic",
+    },
+    button: {
+		width: 300,
+		justifyContent: "center",
+		alignItems: "center",
+		borderRadius: 45,
+		padding: 15,
+	},
+    textButton:{
+        color: "white",
+        fontFamily: "PoppinsRegular",
     }
-
 })
 
 export default styles; 

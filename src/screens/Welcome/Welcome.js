@@ -5,9 +5,9 @@ import {
 	TouchableWithoutFeedback,
 	Keyboard,
 	Platform,
+    StatusBar
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { FocusedStatusBar } from "../../components";
 import { COLORS } from "../../constants";
 import styles from "./styles";
 import TopPart from "./components/TopPart";
@@ -43,7 +43,7 @@ const Welcome = () => {
 					flex: 1,
 				}}
 			>
-				<FocusedStatusBar background={COLORS.primary} />
+				<StatusBar barStyle="dark-content" />
 				<KeyboardAvoidingView
 					behavior={Platform.OS === "ios" ? "padding" : "height"}
 					style={styles.containerAvoiding}
