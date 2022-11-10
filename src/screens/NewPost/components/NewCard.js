@@ -40,6 +40,10 @@ const NewCard = () => {
 		postype: TYPES[0],
 	});
 
+	function obtainCurrentPost() {
+		return postData;
+	}
+
 	const changeTipoPost = () => {
 		const index = TYPES.indexOf(postData.postype) + 1;
 		if (index === TYPES.length) {

@@ -9,6 +9,13 @@ const SendInfoButton = ({ login, userData }) => {
 	const [loading, isLoading] = useState(false);
     const auth = useAuth();
 
+    function obtainSignInFormData() {
+        return userData;
+    }
+
+    function obtainSignUpFormData() {
+        return userData;
+    }
 
     return (
         <>
