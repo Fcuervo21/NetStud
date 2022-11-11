@@ -4,9 +4,13 @@ import { COLORS } from "../../../constants";
 import styles from "../styles";
 import { signInApi, signUpApi } from "../../../api";
 import { useAuth } from "../../../contexts/Auth";
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const SendInfoButton = ({ login, userData }) => {
-	const [loading, isLoading] = useState(false);
+    const dispatch = useDispatch()
+	
+    const [loading, isLoading] = useState(false);
     const auth = useAuth();
 
     function obtainSignInFormData() {

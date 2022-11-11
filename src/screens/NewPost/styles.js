@@ -104,6 +104,11 @@ const styles = StyleSheet.create({
         padding: 10,
         fontStyle: "italic",
     },
+    inputTitle:{
+        // backgroundColor: "red",
+        padding: 10,
+        fontFamily: "PoppinsBold",
+    },
     button: {
 		width: 300,
 		justifyContent: "center",

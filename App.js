@@ -1,11 +1,19 @@
-import {React} from "react";
+import { React } from "react";
 import { useFonts } from "expo-font";
 
 import { Router } from "./src/routes/Router";
 import { AuthProvider } from "./src/contexts/Auth";
+import { Provider } from "react-redux";
+import { composeWithDevTools } from "@redux-devtools/extension";
+import { createStore, applyMiddleware, compose } from "redux";
+import reducers from "./src/reducers";
+import thunk from "redux-thunk";
 
 const App = () => {
-
+	const store = createStore(
+		reducers,
+		composeWithDevTools(applyMiddleware(thunk))
+	);
 	const [loaded] = useFonts({
 		PoppinsBlack: require("./src/assets/fonts/Poppins-Black.ttf"),
 		PoppinsBold: require("./src/assets/fonts/Poppins-Bold.ttf"),
@@ -22,7 +30,9 @@ const App = () => {
 
 	return (
 		<AuthProvider>
-			<Router/>
+			<Provider store={store}>
+				<Router />
+			</Provider>
 		</AuthProvider>
 	);
 };

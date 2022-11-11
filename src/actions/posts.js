@@ -1,4 +1,4 @@
-import { CREATE_POST, FETCH_ALL_POSTS } from "../constants/postsActions";
+import { CREATE_POST, FETCH_ALL_POSTS } from "../reduxConstants/postsConstants";
 import * as api from "../api/index.js";
 
 export const getPosts = () => async (dispatch) =>{
