@@ -1,11 +1,10 @@
 import { AUTH, LOGOUT } from "../reduxConstants/authConstants";
 
-const authReducer = (state = { authData: null }, action) => {
+const authReducer = (state = [], action) => {
     switch (action.type) {
-      case AUTH:
-        localStorage.setItem('profile', JSON.stringify({ ...action?.data }));
+        case AUTH :
   
-        return { ...state, authData: action.data, loading: false, errors: null };
+          return { ...state, authData: action.payload };
       case LOGOUT:
         localStorage.clear();
   

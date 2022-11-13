@@ -1,5 +1,5 @@
 import { Text, Pressable, View } from "react-native";
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { COLORS } from "../../../constants";
 import styles from "../styles";
 import { signInApi, signUpApi } from "../../../api";
@@ -20,7 +20,7 @@ const SendInfoButton = ({ login, userData }) => {
     function obtainSignUpFormData() {
         return userData;
     }
-
+    
     return (
         <>
             {login == true ? (
@@ -31,11 +31,11 @@ const SendInfoButton = ({ login, userData }) => {
                                 .then(async (res) => {
 									const email = res.data.result.email;
 									const token = res.data.token;
-                                    console.log(res.data.result.email);
-                                    console.log(res.data.token);
+                                    const id = res.data.result._id;
+                                    // 
+                                    // dispatch({type: 'SET_USER', payload: {email, token, id}})
                                     
-                                    
-									auth.signIn(email, token);
+									auth.signIn(email, token, id);
 									isLoading(true);
                                     
                                 })

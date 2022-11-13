@@ -82,11 +82,19 @@ const styles = StyleSheet.create({
         color: COLORS.text,
         fontFamily: "PoppinsRegular",
     },
+    cardBodyTitle: {
+        fontSize: 14,
+        color: COLORS.text,
+        fontFamily: "PoppinsBold",
+    },
     image:{
-        backgroundColor: COLORS.secondary,
+        // backgroundColor: COLORS.secondary,
         width: "100%",
         height: 200,
         borderRadius: 10,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         marginVertical: 20,
     },
     actionsContainer: {
@@ -97,7 +105,11 @@ const styles = StyleSheet.create({
     },
     middle:{
         padingHorizontal: 20,
-    }
+    },
+    lottie: {
+        width: 100,
+        height: 100,
+    },
 
 })
 

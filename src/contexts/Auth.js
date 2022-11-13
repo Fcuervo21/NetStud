@@ -44,12 +44,13 @@ const AuthProvider = ({children}) => {
     }
   }
 
-  const signIn = async (email, token)  => {
+  const signIn = async (email, token, id)  => {
     //call the service passing credential (email and password).
     //In a real App this data will be provided by the user from some InputText components.
     const _authData = {
       email,
       token,
+      id
     };
 
     //Set the data in the context, so the App can be notified
@@ -59,7 +60,6 @@ const AuthProvider = ({children}) => {
     //Persist the data in the Async Storage
     //to be recovered in the next user session.
     AsyncStorage.setItem('@AuthData', JSON.stringify(_authData));
-    console.log('Paso');
   };
 
   const signOut = async () => {
