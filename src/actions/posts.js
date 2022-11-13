@@ -1,4 +1,4 @@
-import { CREATE_POST, FETCH_ALL_POSTS } from "../reduxConstants/postsConstants";
+import { CREATE_POST, FETCH_ALL_POSTS, LIKE_POST } from "../reduxConstants/postsConstants";
 import * as api from "../api/index.js";
 
 export const getPosts = () => async (dispatch) =>{
@@ -16,6 +16,16 @@ export const createPost = (newPost) => async (dispatch) =>{
         // Information about the request
         const { data } = await api.createPost(newPost);
         dispatch({ type: CREATE_POST, payload: data });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const changeLike = (idPost) => async (dispatch) =>{
+    try {
+        // Information about the request
+        const { data } = await api.likePost(idPost);
+        dispatch({ type: LIKE_POST, payload: data });
     } catch (error) {
         console.log(error);
     }

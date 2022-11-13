@@ -1,4 +1,4 @@
-import { CREATE_POST, FETCH_ALL_POSTS } from "../reduxConstants/postsConstants";
+import { CREATE_POST, FETCH_ALL_POSTS, LIKE_POST } from "../reduxConstants/postsConstants";
 
 export default (state = [], action) => {
 	switch (action.type) {
@@ -6,6 +6,8 @@ export default (state = [], action) => {
 			return {...state, createPost: [action.payload]};
 		case FETCH_ALL_POSTS:
 			return {...state, fetchAllPosts: [action.payload]};
+		case LIKE_POST:
+			return {likePosts: [action.payload]};
 		default:
 			return state;
 	}

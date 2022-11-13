@@ -12,14 +12,6 @@ const SendInfoButton = ({ login, userData }) => {
 	
     const [loading, isLoading] = useState(false);
     const auth = useAuth();
-
-    function obtainSignInFormData() {
-        return userData;
-    }
-
-    function obtainSignUpFormData() {
-        return userData;
-    }
     
     return (
         <>
@@ -33,7 +25,7 @@ const SendInfoButton = ({ login, userData }) => {
 									const token = res.data.token;
                                     const id = res.data.result._id;
                                     // 
-                                    // dispatch({type: 'SET_USER', payload: {email, token, id}})
+                                    dispatch({type: 'SET_USER', payload: {email, token, id}})
                                     
 									auth.signIn(email, token, id);
 									isLoading(true);
