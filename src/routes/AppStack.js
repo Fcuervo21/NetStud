@@ -1,5 +1,7 @@
 import React from "react";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+
+import Home from "../screens/Home/Home";
 import Posts from "../screens/Posts/Posts";
 import NewPost from "../screens/NewPost/NewPost";
 
@@ -53,7 +55,7 @@ export const AppStack = () => {
             <Tab.Screen
                 name="Home"
                 options={{ headerShown: false }}
-                component={Posts}
+                component={Home}
             />
             {/* <Tab.Screen
                 name="Message"

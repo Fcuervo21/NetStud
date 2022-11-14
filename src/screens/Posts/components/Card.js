@@ -25,24 +25,15 @@ const icon = (type) => {
     }
 };
 
-const Card = ({
-    content,
-    tipoPost,
-    title,
-    image,
-    idPost,
-    userName,
-    userInfo,
-    userId,
-    likes,
-    setLikedPost,
-}) => {
+const Card = ({ post, idUser ,setCurrentId}) => {
+    const {_id, title, type, creator, content, selectedFile, likes, createdAt} = post;
+
     const [liked, setLiked] = useState();
     const dispatch = useDispatch();
 
     const [likedData, setlikedData] = useState({
-        _id: idPost,
-        userId: userId,
+        _id: _id,
+        userId: creator,
     });
 
     const onShare = async () => {
@@ -61,26 +52,27 @@ const Card = ({
                 // dismissed
             }
         } catch (error) {
-            console.log(error);;
+            console.log(error);
         }
     };
 
-    const toggleIcon = (event) => {
-        event.preventDefault();
-        setLiked(!liked);
-        if (liked === true) {
-            setlikedData({ ...likedData, _id: idPost });
-            setLikedPost(likedData._id);
-        } else {
-            setlikedData({ ...likedData, _id: "" });
+    const Likes = () => {
+        if (likes.length >0) {
+            return likes.find((like) => like === idUser)
+            ? (
+                <Liked />
+            ) : (
+                <Heart />
+            );
         }
-        // useEffect(() => {
-        dispatch(changeLike(likedData));
-        // }, [liked]);
-        // changeLike(likedData);
-        // console.log(likedData);
-        // likePost(likedData);
-        // console.log(idPost);
+        return <><Liked /></>;
+        
+        // setLiked(!liked);
+        // if (liked === true) {
+        //     setlikedData({ ...likedData, _id: _id });
+        // } else {
+        //     setlikedData({ ...likedData, _id: "" });
+        // }
     };
 
     return (
@@ -90,10 +82,10 @@ const Card = ({
                     <View style={styles.cardHeader}>
                         <Profile />
                         <View style={styles.wrapperTittle}>
-                            <Text style={styles.cardTitle}>{idPost}</Text>
-                            <Text style={styles.cardSubtitle}>{userInfo}</Text>
+                            <Text style={styles.cardTitle}>{_id}</Text>
+                            <Text style={styles.cardSubtitle}>{creator}</Text>
                         </View>
-                        {icon(tipoPost)}
+                        {icon(type)}
                     </View>
                     <View style={styles.cardBody}>
                         <Text style={styles.cardBodyTitle}>{title}</Text>
@@ -105,18 +97,18 @@ const Card = ({
                                     width: 200,
                                     height: 200,
                                 }}
-                                source={{ uri: image }}
+                                source={{ uri: selectedFile }}
                             />
                         </View>
                         <View style={styles.bottomPartContainer}>
                             <View style={styles.likesWrapper}>
-                                <Text style={styles.likesText}>
-                                    {likes.length}
-                                </Text>
                                 <Pressable
-                                    onPress={(event) => toggleIcon(event)}
+                                    onPress={() => { dispatch(changeLike({
+                                        _id: _id,
+                                        userId: idUser,
+                                    }))}}
                                 >
-                                    {liked ? <Liked /> : <Heart />}
+                                    <Likes />
                                 </Pressable>
                             </View>
                             <View style={styles.middle}>
