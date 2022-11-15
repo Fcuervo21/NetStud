@@ -26,7 +26,8 @@ const icon = (type) => {
 };
 
 const Card = ({ post, idUser ,setCurrentId}) => {
-    const {_id, title, type, creator, content, selectedFile, likes, createdAt} = post;
+    const {_id, title, type, creator, content, selectedFile, likes, createdAt} = post.postMessages;
+    const {image, name} = post.user;
 
     const [liked, setLiked] = useState();
     const dispatch = useDispatch();
@@ -80,9 +81,19 @@ const Card = ({ post, idUser ,setCurrentId}) => {
             <View style={styles.cardWrapper}>
                 <View style={styles.cardContainer}>
                     <View style={styles.cardHeader}>
-                        <Profile />
+
+                        <View style={styles.profilePhoto}>
+
+                        <Image
+                                style={{
+                                    width: 25,
+                                    height: 25,
+                                }}
+                                source={{ uri: image }}
+                            />
+                        </View>
                         <View style={styles.wrapperTittle}>
-                            <Text style={styles.cardTitle}>{_id}</Text>
+                            <Text style={styles.cardTitle}>{name}</Text>
                             <Text style={styles.cardSubtitle}>{creator}</Text>
                         </View>
                         {icon(type)}

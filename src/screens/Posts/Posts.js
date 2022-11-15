@@ -59,7 +59,7 @@ const Posts = ({ setCurrentId }) => {
             <ScrollView>
                 {posts.map((post) => (
                     <Card
-                        key={post._id}
+                        key={post.postMessages._id}
                         post={post}
                         idUser={idUser}
                         setCurrentId={setCurrentId}
