@@ -4,6 +4,7 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import Home from "../screens/Home/Home";
 import Posts from "../screens/Posts/Posts";
 import NewPost from "../screens/NewPost/NewPost";
+import Profile from "../screens/Profile/Profile";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "react-native-vector-icons/";
@@ -75,7 +76,7 @@ export const AppStack = () => {
             <Tab.Screen
                 name="Profile"
                 options={{ headerShown: false }}
-                component={Posts}
+                component={Profile}
             />
         </Tab.Navigator>
     );

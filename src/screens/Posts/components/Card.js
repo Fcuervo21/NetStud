@@ -94,7 +94,7 @@ const Card = ({ post, idUser ,setCurrentId}) => {
                         </View>
                         <View style={styles.wrapperTittle}>
                             <Text style={styles.cardTitle}>{name}</Text>
-                            <Text style={styles.cardSubtitle}>{creator}</Text>
+                            {/* <Text style={styles.cardSubtitle}>{creator}</Text> */}
                         </View>
                         {icon(type)}
                     </View>
@@ -112,7 +112,7 @@ const Card = ({ post, idUser ,setCurrentId}) => {
                             />
                         </View>
                         <View style={styles.bottomPartContainer}>
-                            <View style={styles.likesWrapper}>
+                        <View style={styles.likesWrapper}>
                                 <Pressable
                                     onPress={() => { dispatch(changeLike({
                                         _id: _id,
