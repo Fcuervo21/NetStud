@@ -1,83 +1,113 @@
 import React from "react";
-import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
-
+import { COLORS } from "../constants/theme";
 import Home from "../screens/Home/Home";
 import Posts from "../screens/Posts/Posts";
 import NewPost from "../screens/NewPost/NewPost";
 import Profile from "../screens/Profile/Profile";
-
+import HomeIcon from "../assets/icons/home";
+import HomeIconOutlined from "../assets/icons/homeOutlined";
+import HeartIcon from "../assets/icons/heart";
+import LikeIconOutlined from "../assets/icons/likesOutlined";
+import NewIcon from "../assets/icons/new";
+import NewIconOutlined from "../assets/icons/newOutlined";
+import ProfileIcon from "../assets/icons/profile";
+import ProfileIconOutlined from "../assets/icons/profileOutlined";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "react-native-vector-icons/";
 
 const Tab = createBottomTabNavigator();
 
 export const AppStack = () => {
-    return (
-        <Tab.Navigator
-            screenOptions={({ route }) => ({
-                tabBarIcon: ({ focused, color, size }) => {
-                    let iconName;
+	const IconInTab = ({ name }) => {
+		switch (name) {
+			case "home":
+				return <HomeIcon />;
+			case "homeOulined":
+				return <HomeIconOutlined />;
+			case "likes":
+				return <HeartIcon />;
+			case "likesOulined":
+				return <LikeIconOutlined />;
+			case "newPost":
+				return <NewIcon />;
+			case "newPostOutlined":
+				return <NewIconOutlined />;
+			case "profile":
+				return <ProfileIcon />;
+			case "profileOutlined":
+				return <ProfileIconOutlined />;
+			default:
+				break;
+		}
+	};
 
-                    if (route.name === "Home") {
-                        iconName = focused
-                            ? "md-home-sharp"
-                            : "md-home-outline";
-                    } 
-                    else if (route.name === "Settings") {
-                        iconName = focused ? "ios-list" : "ios-list-outline";
-                    } 
-                    else if (route.name === "New") {
-                        iconName = focused
-                            ? "add-circle"
-                            : "add-circle-outline";
-                    } 
-                    // else if (route.name === "Message") {
-                    //     iconName = focused
-                    //         ? "chatbubble-ellipses"
-                    //         : "chatbubble-ellipses-outline";
-                    // } 
-                    else if (route.name === "Liked") {
-                        iconName = focused ? "ios-heart" : "heart-outline";
-                    } else if (route.name === "Profile") {
-                        iconName = focused
-                            ? "ios-person-circle"
-                            : "ios-person-circle-outline";
-                    }
+	return (
+		<Tab.Navigator
+			tabBarOptions={{
+				showLabel: false,
+			}}
+			screenOptions={({ route }) => ({
+				tabBarStyle: {
+					backgroundColor: COLORS.navback,
+					borderRadius: 50,
+					bottom: 25,
+					position: "absolute",
+					left: 20,
+					right: 20,
+					height: 80,
+					paddingTop: 25,
+					flex: 1,
+					justifyContent: "center",
+					alignItems: "center",
+					alignContent: "center",
+					shadowColor: "#171717",
+					shadowOffset: { width: -2, height: 4 },
+					shadowOpacity: 0.2,
+					shadowRadius: 3,
+				},
+				tabBarIcon: ({ focused, color, size }) => {
+					let iconName;
 
-                    // You can return any component that you like here!
-                    return (
-                        <Ionicons name={iconName} size={size} color={color} />
-                    );
-                },
-                tabBarActiveTintColor: "tomato",
-                tabBarInactiveTintColor: "gray",
-            })}
-        >
-            <Tab.Screen
-                name="Home"
-                options={{ headerShown: false }}
-                component={Home}
-            />
-            {/* <Tab.Screen
+					if (route.name === "Home") {
+						iconName = focused ? "homeOulined" : "home";
+					} else if (route.name === "New") {
+						iconName = focused ? "newPostOutlined" : "newPost";
+					} else if (route.name === "Liked") {
+						iconName = focused ? "likesOulined" : "likes";
+					} else if (route.name === "Profile") {
+						iconName = focused ? "profileOutlined" : "profile";
+					}
+
+					return <IconInTab name={iconName} />;
+				},
+			})}
+		>
+			<Tab.Screen
+				name="Home"
+				component={Home}
+				options={{
+					headerShown: false,
+				}}
+			/>
+			{/* <Tab.Screen
                 name="Message"
-                options={{ headerShown: false }}
+                options={{ headerShown: false }} 
                 component={Posts}
             /> */}
-            <Tab.Screen
-                name="New"
-                options={{ headerShown: false }}
-                component={NewPost}
-            />
-            <Tab.Screen
-                name="Liked"
-                options={{ headerShown: false }}
-                component={Posts}
-            />
-            <Tab.Screen
-                name="Profile"
-                options={{ headerShown: false }}
-                component={Profile}
-            />
-        </Tab.Navigator>
-    );
+			<Tab.Screen
+				name="New"
+				options={{ headerShown: false }}
+				component={NewPost}
+			/>
+			<Tab.Screen
+				name="Liked"
+				options={{ headerShown: false }}
+				component={Posts}
+			/>
+			<Tab.Screen
+				name="Profile"
+				options={{ headerShown: false }}
+				component={Profile}
+			/>
+		</Tab.Navigator>
+	);
 };
