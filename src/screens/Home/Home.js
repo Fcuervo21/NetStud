@@ -17,8 +17,7 @@ const Home = () => {
 
     return (
       <>
-      <HomeHeader />
-      <Posts setCurrentId={setCurrentId} />
+        <Posts setCurrentId={setCurrentId} />
       </>
     );
 };

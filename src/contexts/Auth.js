@@ -35,6 +35,7 @@ const AuthProvider = ({children}) => {
       if (authDataSerialized) {
         //If there are data, it's converted to an Object and the state is updated.
         const _authData = JSON.parse(authDataSerialized);
+        
         setAuthData(_authData);
       }
     } catch (error) {
@@ -44,13 +45,16 @@ const AuthProvider = ({children}) => {
     }
   }
 
-  const signIn = async (email, token, id)  => {
+  const signIn = async (email, token, id, name, image, likedPost)  => {
     //call the service passing credential (email and password).
     //In a real App this data will be provided by the user from some InputText components.
     const _authData = {
       email,
       token,
-      id
+      id,
+      name,
+      image,
+      likedPost
     };
 
     //Set the data in the context, so the App can be notified

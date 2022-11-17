@@ -1,4 +1,11 @@
-import { Share, SafeAreaView, View, Text, Pressable, Image } from "react-native";
+import {
+    Share,
+    SafeAreaView,
+    View,
+    Text,
+    Pressable,
+    Image,
+} from "react-native";
 import styles from "../styles";
 import Profile from "../../../assets/icons/profile";
 import Heart from "../../../assets/icons/heart";
@@ -25,23 +32,36 @@ const icon = (type) => {
     }
 };
 
-const Card = ({ post, idUser ,setCurrentId}) => {
-    const {_id, title, type, creator, content, selectedFile, likes, createdAt} = post.postMessages;
-    const {image, name} = post.user;
+const Card = ({ post, setCurrentId, idUser }) => {
+    const likesInPost = post.postMessages.likes;
 
-    const [liked, setLiked] = useState();
+    const myUserId = idUser != undefined && idUser.logged[0].id;
+    const {
+        _id,
+        title,
+        type,
+        creator,
+        content,
+        selectedFile,
+        likes,
+        createdAt,
+    } = post.postMessages;
+    const { image, name } = post.user;
     const dispatch = useDispatch();
-
-    const [likedData, setlikedData] = useState({
-        _id: _id,
-        userId: creator,
-    });
+    
+    // const [likedData, setlikedData] = useState({
+    //     _id: _id,
+    //     userId: creator,
+    // });
+    
+    const likedData = { _id: _id, userId: creator };
+    const inLikes = likesInPost.includes(myUserId);
+    const [liked, setLiked] = useState(inLikes);
 
     const onShare = async () => {
         try {
             const result = await Share.share({
-                message:
-                    "Compartir Post",
+                message: name + " " + content,
             });
             if (result.action === Share.sharedAction) {
                 if (result.activityType) {
@@ -57,34 +77,31 @@ const Card = ({ post, idUser ,setCurrentId}) => {
         }
     };
 
-    const Likes = () => {
-        if (likes.length >0) {
-            return likes.find((like) => like === idUser)
-            ? (
-                <Liked />
-            ) : (
-                <Heart />
-            );
-        }
-        return <><Liked /></>;
-        
-        // setLiked(!liked);
-        // if (liked === true) {
-        //     setlikedData({ ...likedData, _id: _id });
-        // } else {
-        //     setlikedData({ ...likedData, _id: "" });
-        // }
+
+    const Toggle = () => {
+        setLiked(!liked);
+        dispatch(changeLike(likedData));
     };
+
+    // const Likes = () => {
+    //     if (likes.length >0) {
+    //         return likes.find((like) => like === myUserId)
+    //         ? (
+    //             <Liked />
+    //         ) : (
+    //             <Heart />
+    //         );
+    //     }
+    //     return <><Liked /></>;
+    // };
 
     return (
         <SafeAreaView>
             <View style={styles.cardWrapper}>
                 <View style={styles.cardContainer}>
                     <View style={styles.cardHeader}>
-
                         <View style={styles.profilePhoto}>
-
-                        <Image
+                            <Image
                                 style={{
                                     width: 25,
                                     height: 25,
@@ -112,19 +129,21 @@ const Card = ({ post, idUser ,setCurrentId}) => {
                             />
                         </View>
                         <View style={styles.bottomPartContainer}>
-                        <View style={styles.likesWrapper}>
+                            <View style={styles.likesWrapper}>
                                 <Pressable
-                                    onPress={() => { dispatch(changeLike({
-                                        _id: _id,
-                                        userId: idUser,
-                                    }))}}
+                                    onPress={() => {
+                                        Toggle();
+                                    }}
                                 >
-                                    <Likes />
+                                    {
+                                        //inLikes ? <Liked /> : <Heart />
+                                        liked ? <Liked /> : <Heart />
+                                    }
                                 </Pressable>
                             </View>
-                            <View style={styles.middle}>
+                            {/* <View style={styles.middle}>
                                 <Comment />
-                            </View>
+                            </View> */}
                             <Pressable onPress={onShare}>
                                 <ShareIcon />
                             </Pressable>

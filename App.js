@@ -8,7 +8,11 @@ import { composeWithDevTools } from "@redux-devtools/extension";
 import { createStore, applyMiddleware, compose } from "redux";
 import reducers from "./src/reducers";
 import thunk from "redux-thunk";
+import { LogBox } from 'react-native';
 
+// Ignore log notification by message:
+// LogBox.ignoreLogs(['Warning: ...']);
+LogBox.ignoreAllLogs();
 const App = () => {
 	const store = createStore(
 		reducers,

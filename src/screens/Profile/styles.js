@@ -21,6 +21,15 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         width: "100%",
     },
+    profilePhoto:{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: "100%",
+        width: 40,
+        height: 40,
+        backgroundColor: COLORS.secondary,
+    },
     profileText:{
         fontSize: 20,
         fontFamily: "PoppinsMedium",
@@ -62,6 +71,75 @@ const styles = StyleSheet.create({
         marginVertical: 20,
 
     },
+    lottie: {
+        width: 100,
+        height: 100,
+    },
+
+    // Card styles
+    cardWrapper: {
+        width: "100%",
+        display: "flex",
+        paddingHorizontal: 20,
+        justifyContent: "center",
+        alignItems: "center",
+        marginBottom: 50,
+    },
+    cardContainer: {
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "white",
+        borderRadius: 10,
+        paddingHorizontal: 30,
+        paddingVertical: 10,
+        shadowColor: "#171717",
+        shadowOffset: { width: -2, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+    },
+    cardHeader: {
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    cardBody: {
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "flex-start",
+        marginVertical: 10,
+    },
+    cardBodyText: {
+        fontSize: 14,
+        color: COLORS.text,
+        fontFamily: "PoppinsRegular",
+    },
+    cardBodyTitle: {
+        fontSize: 14,
+        color: COLORS.text,
+        fontFamily: "PoppinsBold",
+    },
+    image: {
+        width: "100%",
+        height: 200,
+        borderRadius: 10,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginVertical: 20,
+    },
+    messageContainer:{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+    }
+    
 });
 
 export default styles;

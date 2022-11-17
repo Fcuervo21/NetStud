@@ -4,42 +4,64 @@ import {
     View,
     Text,
     Pressable,
+    ScrollView,
     Image,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import styles from "../styles";
-import { useDispatch, useSelector } from "react-redux";
 import Profile from "../../../assets/icons/profile";
-import Card from "../../Posts/components/Card";
+import MyPost from "./MyPost";
+import { useDispatch, useSelector } from "react-redux";
 
-const ProfileInfo = ({ post, navigation }) => {
+const ProfileInfo = ({ userData, numberOfLikes }) => {
+    
+    const { name, image, id, likedPosts } = userData;
+    const posts = useSelector((state) => state.posts.allMyPosts);
+    const numPosts = posts!= undefined ? posts.length : 0;
+    // const numLikes = posts!= undefined ? posts.length : 0;
+    // const numLikes = likedPosts.length;
+
     return (
         <SafeAreaView>
             <View style={styles.topWrapper}>
                 <View style={styles.profileWrapper}>
-                    <Image
-                        style={{
-                            width: 25,
-                            height: 25,
-                        }}
-                        source={{ uri: "" }}
-                    />
-                    <Text style={styles.profileText}>username</Text>
+                    <View style={styles.profilePhoto}>
+                        <Image
+                            style={{
+                                width: 25,
+                                height: 25,
+                            }}
+                            source={{ uri: image }}
+                        />
+                    </View>
+                    <Text style={styles.profileText}>{name}</Text>
                 </View>
                 <View style={styles.statsUser}>
                     <View style={styles.statsContainer}>
-                        <Text style={styles.statsNumber}>1532</Text>
+                        <Text style={styles.statsNumber}>{numPosts}</Text>
                         <Text style={styles.statsText}>Posts</Text>
                     </View>
                     <View style={styles.separatorVertical}></View>
                     <View style={styles.statsContainer}>
-                        <Text style={styles.statsNumber}>4310</Text>
-                        <Text style={styles.statsText}>Likes</Text>
+                        <Text style={styles.statsNumber}>{numberOfLikes}</Text>
+                        <Text style={styles.statsText}>Liked Posts</Text>
                     </View>
                 </View>
                 <View style={styles.separatorHorizontal}></View>
             </View>
-            {/* <Card/> */}
+            <SafeAreaView>
+                <ScrollView style={{ marginBottom: 50 }}>
+                    {posts != undefined ? (
+                        posts.map((post) => (
+                            <MyPost key={post._id} postData={post} />
+                        ))
+                    ) : (
+                        <View style={styles.messageContainer}>
+                            <Text style={styles.statsNumber}> No Tienes ningun Post </Text>
+                        </View>
+                    )}
+                </ScrollView>
+            </SafeAreaView>
         </SafeAreaView>
     );
 };

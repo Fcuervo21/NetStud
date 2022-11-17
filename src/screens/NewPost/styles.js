@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
         width: "100%",
         display: "flex",
         paddingHorizontal: 20,
+        paddingBottom: 20,
         justifyContent: "center",
         alignItems: "center",
         height: "100%",
@@ -49,7 +50,15 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
     },
-
+    profilePhoto:{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: "100%",
+        width: 40,
+        height: 40,
+        backgroundColor: COLORS.secondary,
+    },
     wrapperTittle: {
         width: "70%",
         display: "flex",

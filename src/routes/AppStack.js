@@ -4,6 +4,7 @@ import Home from "../screens/Home/Home";
 import Posts from "../screens/Posts/Posts";
 import NewPost from "../screens/NewPost/NewPost";
 import Profile from "../screens/Profile/Profile";
+import LikedPost from "../screens/LikedPost/LikedPost";
 import HomeIcon from "../assets/icons/home";
 import HomeIconOutlined from "../assets/icons/homeOutlined";
 import HeartIcon from "../assets/icons/heart";
@@ -42,23 +43,17 @@ export const AppStack = () => {
 
 	return (
 		<Tab.Navigator
-			tabBarOptions={{
-				showLabel: false,
-			}}
 			screenOptions={({ route }) => ({
+				tabBarShowLabel: false,
 				tabBarStyle: {
 					backgroundColor: COLORS.navback,
 					borderRadius: 50,
-					bottom: 25,
+					bottom: 15,
 					position: "absolute",
 					left: 20,
 					right: 20,
-					height: 80,
-					paddingTop: 25,
+					height: 60,
 					flex: 1,
-					justifyContent: "center",
-					alignItems: "center",
-					alignContent: "center",
 					shadowColor: "#171717",
 					shadowOffset: { width: -2, height: 4 },
 					shadowOpacity: 0.2,
@@ -101,7 +96,7 @@ export const AppStack = () => {
 			<Tab.Screen
 				name="Liked"
 				options={{ headerShown: false }}
-				component={Posts}
+				component={LikedPost}
 			/>
 			<Tab.Screen
 				name="Profile"

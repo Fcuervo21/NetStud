@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const SendInfoButton = ({ login, userData }) => {
     const dispatch = useDispatch()
 	
+
     const [loading, isLoading] = useState(false);
     const auth = useAuth();
     
@@ -24,10 +25,14 @@ const SendInfoButton = ({ login, userData }) => {
 									const email = res.data.result.email;
 									const token = res.data.token;
                                     const id = res.data.result._id;
+                                    const name = res.data.result.name;
+                                    const image = res.data.result.image;
+                                    const likedPost = res.data.result.likedPost;
                                     // 
-                                    dispatch({type: 'SET_USER', payload: {email, token, id}})
+
+                                    dispatch({type: 'LOGGED_INFO', payload: {email, token, id, name, image, likedPost}})
                                     
-									auth.signIn(email, token, id);
+									auth.signIn(email, token, id, name, image, likedPost);
 									isLoading(true);
                                     
                                 })

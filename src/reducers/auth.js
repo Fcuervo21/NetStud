@@ -1,4 +1,4 @@
-import { AUTH, LOGOUT } from "../reduxConstants/authConstants";
+import { AUTH, LOGOUT, LOGGED_INFO } from "../reduxConstants/authConstants";
 
 const authReducer = (state = [], action) => {
     // switch (action.type) {
@@ -29,6 +29,8 @@ const authReducer = (state = [], action) => {
             localStorage.clear();
 
             return { ...state, authData: null, loading: false, errors: null };
+        case LOGGED_INFO:
+            return {...state, logged: [action.payload]};
         default:
             return state;
     }
